@@ -1,0 +1,68 @@
+    //Se crean arreglos para guardar las posiciones tanto de las escaleras y sus respectivos finales como de las serpientes
+    Integer [] Ladders=new Integer[]{3,6,9,10};
+    Integer [] EndLadders=new Integer[]{11,17,18,12};
+    Integer [] Snakes=new Integer[]{14,19,22,24};
+    Integer [] EndSnakes=new Integer[]{4,8,20,16};
+    public Integer position = 0;
+    
+    //El loop se repite mientras la posicion sea menor a 25
+ 	{do{
+         //Se randomiza el valor de este turno y se guarda en una variable(se ajusta para que sea siempre desde 1 a 6)
+        	Integer dice = Integer.valueOf((1 + Math.random()*6));
+            //Se imprime el valor del dado
+            system.debug('Dado arrroja:'+ dice);
+            //Se le suma a  la posicion el valor del dado de ese turno
+        	position = position + dice;
+        //Se verifica si la posicion corresponde con alguna posicion de escalera y si es asi a donde sube
+        if(position == Ladders[0]){ 
+            position = EndLadders[0];
+            //Se imprime la posicion correspondiente
+            system.debug('Jugador sube por la escalera al cuadro:' + position);
+        }
+        if(position == Ladders[1]){ 
+            position = EndLadders[1];
+            system.debug('Jugador sube por la escalera al cuadro:' + position);
+        }
+        if(position == Ladders[2]){ 
+            position = EndLadders[2];
+            system.debug('Jugador sube por la escalera al cuadro:' + position);
+        }
+        if(position == Ladders[3]){ 
+            position = EndLadders[3];
+            system.debug('Jugador sube por la escalera al cuadro:' + position);
+        }
+        //Se verifica si la posicion corresponde con alguna posicion de serpientes y si es asi a donde baja
+        if(position == Snakes[0]){
+            position = EndSnakes[0];
+            system.debug('Jugador desciende al cuadro:' + position);
+        }
+        if(position == Snakes[1]){
+            position = EndSnakes[1];
+            system.debug('Jugador desciende al cuadro:' + position);
+        }
+        if(position == Snakes[2]){
+            position = EndSnakes[2];
+            system.debug('Jugador desciende al cuadro:' + position);
+        }
+        if(position == Snakes[3]){
+            position = EndSnakes[3];
+            system.debug('Jugador desciende al cuadro:' + position);
+        }
+        //Para verificar si el jugador se salta x casillas se usa un if
+        if(position > 25){
+            //Se guarda la posicion antes de tirar los dados en ese turno
+            baseposition = position - dice;
+            //Se calcula el extra de casillas
+            extras = position - 25;
+            system.debug('te saltaste:' + extras + 'cuadros');
+            //La posicion vuelve a ser la misma desde antes de tirar los dados para que este solo pueda terminar el juego si obtiene 25 exactos
+            position = baseposition;
+        }
+       	system.debug('Jugador avanza a cuadro:' + position);
+		} while(position < 25);}	
+
+
+
+
+
+    
